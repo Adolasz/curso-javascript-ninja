@@ -33,7 +33,7 @@ isTruthy('Milionario')
 isTruthy(1.90)
 isTruthy(10)
 isTruthy('sobrenome')
-isTruthy('Bilionario')
+isTruthy(10 + 10)
 
 
 /*
