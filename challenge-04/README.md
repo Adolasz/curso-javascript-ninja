@@ -71,7 +71,7 @@ carro.cor = a;
 Crie um método chamado `obterCor`, que retorne a cor do carro.
 */
 carro.obterCor = function() {
-    carro.cor = 'cinza';
+    return carro.cor
 }
 
 /*
@@ -119,7 +119,7 @@ citado acima, no lugar de "pessoas".
 carro.pessoasEntrar = function(a) {
    var total = carro.quantidadePessoas + a;
        
-   if(carro.quantidadePessoas === carro.assentos) { 
+   if(carro.quantidadePessoas === carro.assentos && carro.total >= carro.assentos) { 
         return 'O carro ja esta lotado!!';
    }
 
@@ -146,10 +146,10 @@ Qual a cor atual do carro?
 carro.cor // 'cinza'
 
 // Mude a cor do carro para vermelho.
-carro.mudarCor(vermelho) // 'vermelho'
+carro.mudarCor('vermelho') // 'vermelho'
 
 // E agora, qual a cor do carro?
-// 'vermelho'
+// carro.obterCor // 'vermelho'
 
 // Mude a cor do carro para verde musgo.
 carro.mudarcor('verde musgo')
@@ -170,7 +170,7 @@ carro.pessoasEntrar(4) // 'So cabem mais 3 pessoas!!'
 carro.pessoasEntrar(3) // 'Já temos 5 pessoas no carro!'
 
 // Tire 4 pessoas do carro.
-carro.quantidadePessoas = 1 // 1
+carro.pessoasEntrar(-4) // 'Já temos 1 pessoas no carro!'
 
 // Adicione 10 pessoas no carro.
 carro.pessoasEntrar(10) // 'So cabem mais 4 pessoas!!'
