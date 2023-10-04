@@ -4,7 +4,10 @@ para começar o desafio.
 Declare uma variável chamada `championship` que receberá o nome do campeonato,
 e imprima o nome desse campeonato no console.
 */
-// ?
+var championship = 'Campeonato Carioca'
+console.log(championship); // Campeonato Carioca
+
+
 
 /*
 Declare uma variável chamada `teams`, que receberá um array com 5 elementos.
@@ -12,9 +15,11 @@ Os elementos serão nomes de times do campeonato escolhido, e os nomes devem
 estar na ordem em que eles aparecem na tabela no momento da solução desse
 desafio.
 */
-// ?
+var teams = ['Fluminese', 'Vasco da Gama', 'Flamengo','Volta Redonda','Botafogo'];
 
-console.log( 'Times que estão participando do campeonato:', teams );
+
+
+console.log( 'Fluminese', 'Vasco da Gama', 'Flamengo','Volta Redonda','Botafogo', teams );
 
 /*
 Crie uma função chamada `showTeamPosition` com as seguintes características:
@@ -32,19 +37,52 @@ Crie uma função chamada `showTeamPosition` com as seguintes características:
     - Se não houver time para a posição passada, deve retornar a mensagem:
     "Não temos a informação do time que está nessa posição."
 */
-// ?
+function showTeamPosition(nu) {
+    switch(nu){
+        case 1:
+        console.log('O time que está em '+nu+'º lugar é o '+teams[0]+'.');
+        break;
+        case 2:
+        console.log('O time que está em '+nu+'º lugar é o '+teams[1]+'.');
+        break;
+        case 3:
+        console.log('O time que está em '+nu+'º lugar é o '+teams[2]+'.');
+        break;
+        case 4:
+        console.log('O time que está em '+nu+'º lugar é o '+teams[3]+'.');
+        break;
+        case 5:
+        console.log('O time que está em '+nu+'º lugar é o '+teams[4]+'.');
+        break;
+        default:
+        console.log('Não temos a informação do time que está nessa posição.');
+    }
+}
+
+
+
 
 /*
 Escolha 4 times do campeonato selecionado e mostre a posição dele, usando a
 função acima. Entre esses 4, adicione 1 que não esteja entre os 5 primeiros.
 */
-// ?
+showTeamPosition(1);  // O time que está em 1º lugar é o Fluminese.
+showTeamPosition(2);  // O time que está em 2º lugar é o Vasco da Gama.
+showTeamPosition(3);  // O time que está em 3º lugar é o Flamengo.
+showTeamPosition(7);  // Não temos a informação do time que está nessa posição.
+
+
 
 /*
 Mostre os números de 20 a 30 no console (inclusive o 30), usando a estrutura de
 repetição "while".
 */
-// ?
+var rep = 20;
+while(rep < 30) {
+... console.log(rep);
+... ++rep;
+... }
+
 
 /*
 Crie uma função chamada `convertToHex`, com as seguintes características:
@@ -58,9 +96,45 @@ Crie uma função chamada `convertToHex`, com as seguintes características:
     a frase:
     "Não temos o equivalente hexadecimal para [COR]."
 */
-// ?
+function convertToHex(color) {
+    var hexas = {
+        'vermelho': '#FF0000',
+        'amarelo':  '#FFE400 ',
+        'verde' :   '#36FF00',
+        'azul' :    '#003AFF',
+        'roxo' :    '#4900FF'
+    }
+    switch(color) {
+        case 'vermelho':
+        console.log('O hexadecimal para a cor '+ color+' é '+hexas.vermelho+'.');
+        break;
+        case 'amarelo':
+        console.log('O hexadecimal para a cor '+ color+' é '+hexas.amarelo+'.');
+        break;
+        case 'verde':
+        console.log('O hexadecimal para a cor '+ color+' é '+hexas.verde+'.');
+        break;
+        case 'azul':
+        console.log('O hexadecimal para a cor '+ color+' é '+hexas.azul+'.');
+        break;
+        case 'roxo':
+        console.log('O hexadecimal para a cor '+ color+' é '+hexas.roxo+'.');
+        break;
+        default:
+        console.log('Não temos o equivalente hexadecimal para ' +color+ '.') 
+    }
+}
+
+
 
 /*
 Tente mostrar o hexadecimal de 8 cores diferentes usando a função criada acima.
 */
-// ?
+convertToHex('vermelho') // O hexadecimal para a cor vermelho é #FF0000.
+convertToHex('azul')     // O hexadecimal para a cor azul é #003AFF.
+convertToHex('amarelo')  // O hexadecimal para a cor amarelo é #FFE400 .
+convertToHex('verde')    // O hexadecimal para a cor verde é #36FF00.
+convertToHex('roxo')     // O hexadecimal para a cor roxo é #4900FF.
+convertToHex('cinza')    // Não temos o equivalente hexadecimal para cinza.
+convertToHex('preto')    // Não temos o equivalente hexadecimal para preto.
+convertToHex('branco')   // Não temos o equivalente hexadecimal para branco.
