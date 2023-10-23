@@ -76,7 +76,7 @@ function calculator(a,b) {
 Declare uma variável chamada `sum`, e atribua a ela a função `calculator`,
 passando dois números por parâmetro.
 */
-var sum = calculator(7,3);
+var sum = calculator(7,3)('+');
 
 /* 
 Sabemos que `sum` agora tem uma função atribuída a ela, que é o retorno de
@@ -87,15 +87,51 @@ para a chamada à `calculator` acima.
 uma função anônima que irá retornar a soma dos dois números que essa função
 anônima tem como seus argumentos.
 */
-console.log( 'O resultado da soma é:' );
-// ?
+
+function calculator(a,b) {
+    return function(callback) {
+        var result;
+        if(callback === 'callback') {
+            return 'Os números passoados são '+a+' e '+b+'.';
+        }
+        switch(callback) {
+        case '+':
+            result = a + b;
+        break;
+        case '-':
+            result = a - b;
+        break;
+        case '*':
+            result = a * b;
+        break;
+        case '/':
+            result = a / b;
+        break;
+        case '%':
+            result = a % b;
+        break;
+        default:
+            return 'Operador não indeficado!!';
+
+        }
+        return '' +a+ ' ' +callback+ ' ' +b+ ' = ' +result+''
+    };
+}
+
+console.log( 'O resultado da soma é: '+sum+' ' );
 
 /*
 Agora declare outra variáveis chamadas `subtraction`, `multiplication`,
 `division` e `mod`, e atribua à elas `calculator`, passando números
 diferentes para cada chamada.
 */
-// ?
+var subtraction = calculator(10, 8)('-');
+
+var multiplication = calculator(5,9)('*');
+
+var division = calculator (8,2)('/');
+
+var mod = calculator(10,2)('%');
 
 /*
 Mostre as variáveis acima no `console` (uma chamada de console por variável),
@@ -104,14 +140,14 @@ divisão e módulo (resto de divisão), conforme a função utilizada.
 As suas respostas devem estar abaixo dos `console.log` referentes à cada
 chamada.
 */
-console.log( 'O resultado da subtração é:' );
-// ?
+console.log( 'O resultado da subtração é: '+subtraction+'');
+//O resultado da subtração é: 10 - 8 = 2
 
-console.log( 'O resultado da multiplicação é:' );
-// ?
+console.log( 'O resultado da multiplicação é: '+multiplication+'');
+//O resultado da multiplicação é: 5 * 9 = 45  
 
-console.log( 'O resultado da divisão é:' );
-// ?
+console.log( 'O resultado da divisão é: '+division+'' );
+//O resultado da divisão é: 8 / 2 = 4
 
-console.log( 'O resto da divisão é:' );
-// ?
+console.log( 'O resto da divisão é: '+mod+'' );
+//O resto da divisão é: 10 % 2 = 0
