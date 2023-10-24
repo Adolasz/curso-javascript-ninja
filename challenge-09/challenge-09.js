@@ -64,19 +64,17 @@
   por parâmetro, INVOCADA, e passando a ela por parâmetro os dois valores
   que foram passadas para a primeira função `calculator`.
   */
-  function calculator(a,b) {
-      return function(callback) {
-          if(callback === 'callback') {
-              return 'Os números passoados são '+a+' e '+b+'.';
-          }
-      };
-  }
+  function calculator(nu1,nu2) {
+    return function( callback ) {
+        return callback(nu1,nu2);
+    };
+}
   
   /*
   Declare uma variável chamada `sum`, e atribua a ela a função `calculator`,
   passando dois números por parâmetro.
   */
-  var sum = calculator(7,3)('+');
+  var sum = calculator(7,3);
   
   /* 
   Sabemos que `sum` agora tem uma função atribuída a ela, que é o retorno de
@@ -88,50 +86,23 @@
   anônima tem como seus argumentos.
   */
   
-  function calculator(a,b) {
-      return function(callback) {
-          var result;
-          if(callback === 'callback') {
-              return 'Os números passoados são '+a+' e '+b+'.';
-          }
-          switch(callback) {
-          case '+':
-              result = a + b;
-          break;
-          case '-':
-              result = a - b;
-          break;
-          case '*':
-              result = a * b;
-          break;
-          case '/':
-              result = a / b;
-          break;
-          case '%':
-              result = a % b;
-          break;
-          default:
-              return 'Operador não indeficado!!';
-  
-          }
-          return '' +a+ ' ' +callback+ ' ' +b+ ' = ' +result+''
-      };
-  }
-  
-  console.log( 'O resultado da soma é: '+sum+' ' );
+  console.log(sum (function(number1, number2) {
+    return number1 + number2;
+  }) );
+
   
   /*
   Agora declare outra variáveis chamadas `subtraction`, `multiplication`,
   `division` e `mod`, e atribua à elas `calculator`, passando números
   diferentes para cada chamada.
   */
-  var subtraction = calculator(10, 8)('-');
+  var subtraction = calculator(10, 8);
   
-  var multiplication = calculator(5,9)('*');
+  var multiplication = calculator(5,9);
   
-  var division = calculator (8,2)('/');
+  var division = calculator (8,2);
   
-  var mod = calculator(10,2)('%');
+  var mod = calculator(10,2);
   
   /*
   Mostre as variáveis acima no `console` (uma chamada de console por variável),
