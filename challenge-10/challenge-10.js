@@ -95,7 +95,10 @@
   'A operação [NUMBER1] [OPERATOR] [NUMBER2] =';
   Essa função mostrará a mensagem da operação que criaremos mais abaixo.
   */
-  // ?
+  function showOperationMessage(op,n1,n2) {
+      var result = operation[op](n1,n2);
+      return 'A operação '+n1+' '+op+' '+n2+ ' = '+result+'';
+  };
   
   /*
   Crie uma função chamada "showErrorMessage" que recebe um parâmetro: o
@@ -103,7 +106,12 @@
   Essa função deverá retornar a frase:
   'Operação "[OPERATOR]" não permitida!'
   */
-  // ?
+  function showErrorMessage(errorOp) {
+    var erro = operation[errorOp];
+    if(typeof erro === 'undefined') {
+        return 'Operação '+errorOp+' não permitida!'
+    }
+  };
   
   /*
   Nossa calculadora está pronta! Agora vamos testá-la:
@@ -111,7 +119,11 @@
   - Declare 3 variáveis: "number1" e "number2", iniciando com valor zero, e
   "operationSignal", sem valor por enquanto.
   */
-  // ?
+  var number1 = 0;
+
+  var number2 = 0;
+  
+  var operationSignal;
   
   /*
   PASSO 2:
@@ -119,7 +131,8 @@
   variável chamada "sum", que receba a função "calculator", passando por
   parâmetro a variável que recebeu o sinal da operação.
   */
-  // ?
+  operationSignal = '+';
+  var sum = calculator(operationSignal)
   
   /*
   PASSO 3:
