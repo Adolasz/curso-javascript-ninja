@@ -55,7 +55,9 @@
   Caso contrário, "false".
   - O desafio é fazer o retorno sem usar "if" ou "switch".
   */
-  // ?
+  function isOperatorValid(operador) {
+    return !!operador;
+  };
   
   /*
   Agora vamos criar a calculadora.
@@ -69,7 +71,22 @@
   operador passado para a função "calculator", e passando para esse método
   os dois parâmetros da função de retorno de "calculator".
   */
-  // ?
+  function calculator(operador) {
+    var valid = !!operador;
+    if(valid === false) {
+        return false;
+    }
+    else {
+        return function(number1, number2) {
+           if(typeof number1 !== 'number' && typeof number2 !== 'number' ) {
+                return false;
+              }
+           else{
+            return operation[operador](number1,number2)
+              }
+          }  
+      }
+  };  
   
   /*
   Crie uma função chamada "showOperationMessage" que recebe três parâmetros:
