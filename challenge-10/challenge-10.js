@@ -14,7 +14,7 @@
   var five = Number('5');
   console.log( five + ' é número?', typeof five === 'number' );
   
-  var concat = String(10 + 10);
+  var concat = String(10) + 10;
   console.log( '"' + concat + '" é uma string? E é igual a "1010"?', typeof concat === 'string' );
   
   /*
@@ -56,7 +56,7 @@
   - O desafio é fazer o retorno sem usar "if" ou "switch".
   */
   function isOperatorValid(operador) {
-    return !!operador;
+    return !!operation[operador];
   };
   
   /*
@@ -71,21 +71,18 @@
   operador passado para a função "calculator", e passando para esse método
   os dois parâmetros da função de retorno de "calculator".
   */
-  function calculator(operador) {
-    var valid = !!operador;
-    if(valid === false) {
+  function calculator(ope) {
+    if( !isOperatorValid(ope) ) {
         return false;
-    }
-    else {
-        return function(number1, number2) {
-           if(typeof number1 !== 'number' && typeof number2 !== 'number' ) {
-                return false;
-              }
-           else{
-            return operation[operador](number1,number2)
-              }
-          }  
-      }
+     }
+     return function(n1, n2) {
+        if(typeof n1 !== 'number' && typeof n2 !== 'number' ) {
+            return false;
+          }
+          else{
+            return operation[ope](n1,n2)
+          }
+      }  
   };  
   
   /*
@@ -96,8 +93,7 @@
   Essa função mostrará a mensagem da operação que criaremos mais abaixo.
   */
   function showOperationMessage(op,n1,n2) {
-      var result = operation[op](n1,n2);
-      return 'A operação '+n1+' '+op+' '+n2+ ' = '+result+'';
+      return 'A operação '+n1+' '+op+' '+n2+ ' = ';
   };
   
   /*
@@ -107,10 +103,7 @@
   'Operação "[OPERATOR]" não permitida!'
   */
   function showErrorMessage(errorOp) {
-    var erro = operation[errorOp];
-    if(typeof erro === 'undefined') {
-        return 'Operação '+errorOp+' não permitida!'
-    }
+    return 'Operação '+errorOp+' não permitida!'
   };
   
   /*
@@ -146,21 +139,86 @@
   - O segundo, a função de soma, passando os dois operandos.
   - Se "sum" for "false", mostrar no console a mensagem de erro.
   */
-  // ?
+  if( sum ) {
+    number1 = 20;
+    number2 = 80;
+    console.log(showOperationMessage(operationSignal,number1,number2), sum(number1,number2));
+  }
+  else {
+    console.log(showErrorMessage(operationSignal))
+  } 
   
   /*
   Repita desde o "PASSO 2" com as operações de subtração, multiplicação,
   divisão e resto. Crie variáveis com os nomes "subtraction",
   "multiplication", "division" e "mod".
   */
-  // ?
+  operationSignal = '-'
+  var subtração = calculator(operationSignal);
+  if( subtração ) {
+    number1 = 100;
+    number2 = 50;
+    console.log(showOperationMessage(operationSignal,number1,number2), subtração(number1,number2));
+  }
+  else {
+    console.log(showErrorMessage(operationSignal))
+  } 
+  //----------
+  operationSignal = '*';
+
+  var multiplicação = calculator(operationSignal);
   
+  if( multiplicação ) {
+    number1 = 9;
+    number2 = 7;
+    console.log(showOperationMessage(operationSignal,number1,number2), multiplicação(number1,number2));
+  }
+  else {
+    console.log(showErrorMessage(operationSignal))
+  } 
+  //----------
+  operationSignal = '/';
+
+  var divisão = calculator(operationSignal);
+  
+  if( divisão ) {
+    number1 = 40;
+    number2 = 12;
+    console.log(showOperationMessage(operationSignal,number1,number2), divisão(number1,number2));
+  }
+  else {
+    console.log(showErrorMessage(operationSignal))
+  } 
+  //----------
+  operationSignal = '%';
+  
+  var resto = calculator(operationSignal);
+  
+  if( resto ) {
+    number1 = 100;
+    number2 = 60;
+    console.log(showOperationMessage(operationSignal,number1,number2), resto(number1,number2));
+  }
+  else {
+    console.log(showErrorMessage(operationSignal))
+  } 
+
   /*
   Repita o PASSO 2 novamente, mas passando um operador inválido, para ver se
   a mensagem de erro será mostrada no console.
   */
-  // ?
-  
+  operationSignal = '?';
+
+  var invalid = calculator(operationSignal);
+
+  if( invalid ) {
+    number1 = 100;
+    number2 = 60;
+    console.log(showOperationMessage(operationSignal,number1,number2), invalid(number1,number2));
+  }
+  else {
+    console.log(showErrorMessage(operationSignal))
+  } 
   
   
 
